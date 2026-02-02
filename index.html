@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nakul | Personal Website</title>
+  <style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Segoe UI,Arial,sans-serif;
+      background:radial-gradient(circle at top,#1b2735,#090a0f);
+      color:#fff;
+      overflow:hidden;
+    }
+    header{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+    }
+    .card{
+      background:rgba(255,255,255,0.12);
+      backdrop-filter:blur(14px);
+      padding:42px 32px;
+      border-radius:26px;
+      max-width:420px;
+      width:100%;
+      box-shadow:0 30px 60px rgba(0,0,0,.55);
+      animation:fadeUp 1.2s ease;
+      z-index:2;
+    }
+    img{
+      width:170px;
+      height:170px;
+      border-radius:50%;
+      object-fit:cover;
+      border:4px solid #fff;
+      margin-bottom:18px;
+      animation:float 4s ease-in-out infinite;
+    }
+    h1{margin:10px 0 5px;font-size:2.3rem}
+    h2{font-weight:400;font-size:1.1rem;opacity:.9;margin-bottom:18px}
+    p{line-height:1.7;font-size:1rem;opacity:.95}
+    .btns{
+      margin-top:22px;
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    a{
+      text-decoration:none;
+      padding:12px 26px;
+      border-radius:30px;
+      background:linear-gradient(135deg,#ff512f,#f09819);
+      color:#000;
+      font-weight:600;
+      transition:.3s;
+    }
+    a.secondary{
+      background:linear-gradient(135deg,#24c6dc,#514a9d);
+      color:#fff;
+    }
+    a:hover{transform:translateY(-3px)}
+
+    /* Animations */
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(40px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-12px)}
+    }
+
+    /* Stars */
+    .star{
+      position:absolute;
+      width:2px;
+      height:2px;
+      background:#fff;
+      opacity:.8;
+      animation:twinkle linear infinite;
+    }
+    @keyframes twinkle{
+      from{opacity:.2}
+      to{opacity:1}
+    }
+
+    .music-btn{
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      background:rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.3);
+      padding:12px 18px;
+      border-radius:30px;
+      color:#fff;
+      cursor:pointer;
+      backdrop-filter:blur(10px);
+      z-index:3;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Background Music -->
+<audio id="bgm" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Stars -->
+<script>
+  for(let i=0;i<80;i++){
+    const s=document.createElement('div');
+    s.className='star';
+    s.style.left=Math.random()*100+'vw';
+    s.style.top=Math.random()*100+'vh';
+    s.style.animationDuration=(2+Math.random()*4)+'s';
+    document.body.appendChild(s);
+  }
+</script>
+
+<header>
+  <div class="card">
+    <img src="photo.jpg" alt="Nakul" />
+    <h1>Nakul</h1>
+    <h2>Vibe • Music • Motion</h2>
+    <p>
+      Welcome to my personal space ✨<br />
+      Music in the background, smooth animations,
+      and a calm night-sky vibe.
+    </p>
+    <div class="btns">
+      <a href="#">Instagram</a>
+      <a href="#" class="secondary">Contact Me</a>
+    </div>
+  </div>
+</header>
+
+<button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
+
+<script>
+  const music=document.getElementById('bgm');
+  let playing=false;
+  function toggleMusic(){
+    if(!playing){music.play();playing=true}
+    else{music.pause();playing=false}
+  }
+</script>
+
+</body>
+</html>
